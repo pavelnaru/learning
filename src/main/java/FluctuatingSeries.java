@@ -27,9 +27,7 @@ public class FluctuatingSeries {
         System.out.println(data.toString());
         if (data.size()>1) {
             List<Integer> delta = calcDelta();
-            System.out.println(delta.toString());
             List<Boolean> fluctuatingStatus = checkFluctuation(delta);
-            System.out.println(fluctuatingStatus.toString());
             for (int start = 0; start < fluctuatingStatus.size(); start++) {
                 int length = checkFluctuatingLength(fluctuatingStatus, start);
                 longest = length > longest ? length : longest;
@@ -57,9 +55,8 @@ public class FluctuatingSeries {
         int longest = 0;
         int index=0;
         for (index = 0; index+startingPoint < fluctuatingStatus.size(); index++){
-            System.out.println(fluctuatingStatus.get(index+startingPoint));
             if ((fluctuatingStatus.get(index+startingPoint))){
-                longest++;
+                longest++ ;
             }else break;
         }
         System.out.println(String.format("Checking with starting point = %d ; result = %d", startingPoint, longest));
