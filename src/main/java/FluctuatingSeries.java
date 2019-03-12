@@ -4,22 +4,30 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class FluctuatingSeries {
-    List<Integer> data = new ArrayList<Integer>();
-//    List<Integer> delta = new ArrayList<Integer>();
+    List<Integer> data = new ArrayList<>();
 
     public FluctuatingSeries(){
         while (true){
             String[] input = Main.scanner.nextLine().split(",");
             try {
-                data.clear();
-                data = Arrays.stream(input).map(Integer::valueOf).collect(Collectors.toList());
-                if (data.size()==0) throw new NumberFormatException();
+                this.data.clear();
+                this.data = Arrays.stream(input).map(Integer::parseInt).collect(Collectors.toList());
+                if (this.data.size()==0) throw new NumberFormatException();
+                break;
             }catch (NumberFormatException e){
-                System.out.print("Invalid input. Retry.");
+                System.out.print("Invalid input");
             }
-            break;
         }
-
+    }
+    public FluctuatingSeries(String allInput){
+        String[] input = allInput.split(",");
+        try {
+            this.data.clear();
+            this.data = Arrays.stream(input).map(Integer::parseInt).collect(Collectors.toList());
+            if (this.data.size()==0) throw new NumberFormatException();
+        }catch (NumberFormatException e){
+            System.out.print("Invalid input. Retry.");
+        }
     }
 
     public void main(){
@@ -32,7 +40,8 @@ public class FluctuatingSeries {
                 int length = checkFluctuatingLength(fluctuatingStatus, start);
                 longest = length > longest ? length : longest;
             }
-        }else longest = 2;
+        }else if (data.size()==1) longest = 1;
+        else longest = 0;
         System.out.println(String.format("Longest fluctuating sequences is: %d", longest));
 
     }
@@ -59,7 +68,7 @@ public class FluctuatingSeries {
                 longest++ ;
             }else break;
         }
-        System.out.println(String.format("Checking with starting point = %d ; result = %d", startingPoint, longest));
+//        System.out.println(String.format("Checking with starting point = %d ; result = %d", startingPoint, longest));
         return longest + 2;
     }
 
