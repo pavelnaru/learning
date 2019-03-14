@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -33,10 +34,27 @@ public class Main {
                     System.out.println(ParityOutlier.find(new int[]{1056521,7,17,1901,206847684,21104421,7,1,35521,1,7781}));
 
                     break;
+                case 5:
+//                    MaxContiguousSum mcs = new MaxContiguousSum(new int[]{3, -4, 8, 7, -10, 19, -3}).;
+//                    mcs.findMaxContiguousSum();
+                    int w=10;
+                    while (w-- > 0){
+                        StringBuffer builder= new StringBuffer();
+                        for (long l=0; l < 50000; l++){
+                            int a = Integer.parseInt( String.valueOf(Math.random()*1000).split("\\.")[0]);
+                            int b = Integer.parseInt( String.valueOf(Math.random()*1000).split("\\.")[0]);
+                            builder.append(a* ((b%2)==0?1:-1) ).append(",");
+                        }
+                        int[] data = Arrays.stream(builder.toString().split(",")).mapToInt(Integer::valueOf).toArray();
+                        System.out.println(MaxContiguousSum.maxContiguousSum_v2(data));
+                    }
+
+                    break;
+
                 default:
-                    StringBuilder builder = new StringBuilder();
-                    for (int i =0; i < 1500; i++) builder.append("1,2,0,4,0,2,");
-                    FluctuatingSeries fs1 = new FluctuatingSeries(builder.toString());
+                    StringBuilder builderDef = new StringBuilder();
+                    for (int i =0; i < 1500; i++) builderDef.append("1,2,0,4,0,2,");
+                    FluctuatingSeries fs1 = new FluctuatingSeries(builderDef.toString());
                     fs1.main();
                     fs1 = new FluctuatingSeries("100");
                     fs1.main();
