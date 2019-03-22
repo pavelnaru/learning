@@ -16,6 +16,7 @@ public class NextSparseNumber {
             }
         }
         this.number = input;
+        // scanner.close();
     }
 
     public NextSparseNumber(Long init){
