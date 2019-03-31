@@ -53,6 +53,7 @@ public class Main {
                     break;
 
                 default:
+                    System.out.println("running default case\n");
                     StringBuilder builderDef = new StringBuilder();
                     for (int i = 0; i < 1500; i++) builderDef.append("1,2,0,4,0,2,");
                     FluctuatingSeries fs1 = new FluctuatingSeries(builderDef.toString());
